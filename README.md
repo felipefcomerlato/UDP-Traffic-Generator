@@ -8,9 +8,12 @@ Program to generate network traffic for testing (similar to IPERF, but simplifie
 
 ### Prerequisites
 
-* Linux
 * Python 3
 
 ### How to execute
 
 * python3 gt.py -i "ipdest" -p "port" -r "rate"
+
+#### Obs
+
+* Program developed and tested only on Linux Mint.
