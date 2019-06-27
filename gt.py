@@ -19,8 +19,9 @@ clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 dest = (ip_dest, port)
 
-pack = (rate/1000)*125 # Pack size in bytes
-sleep = 1/1000 # To send 1000 packets per second
+pack = 1250 # in bytes (10x125 bytes)
+sleep = 1/(rate/10) # To send N packets per second
+sleep_rounded = round(sleep,5)
 
 print("\n\n-----------------------------------------------")
 print("Dest: %s | Port: %s | Rate: %s Kbits" % (str(args.ip_dest), str(args.port), str(args.rate)))
@@ -29,6 +30,6 @@ print("-----------------------------------------------\n\n")
 
 while True:
   clientSocket.sendto(bytes(int(pack)), dest)
-  time.sleep(sleep)
+  time.sleep(sleep_rounded)
 
 clientSocket.close()
